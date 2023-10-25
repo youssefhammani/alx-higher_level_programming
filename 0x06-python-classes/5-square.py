@@ -8,11 +8,7 @@ class Square:
         """ Initialising attribute instance
         Args: size: size of square
         """
-    if not isinstance(size, int):
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise ValueError("size must be >= 0")
-    self.__size = size
+        self.size = size
 
     @property
     def size(self):
@@ -22,7 +18,7 @@ class Square:
     @size.setter
     def size(self, value):
         """ setting the size of square """
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
@@ -37,6 +33,7 @@ class Square:
         if self.__size == 0:
             print("")
         else:
-            for _ in range(self.__size):
-                print("#" * self.__size)
-            print()
+            for i in range(0, self.__size):
+                for j in range(0, self.__size):
+                    print("#", end='')
+                print()
