@@ -7,19 +7,18 @@ and then save them to a file
 
 import sys
 import json
-import os.path
+from os import path
 
-save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
-load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-my_file = 'add_item.json'
-my_list = []
+filename = "add_item.json"
 
-if os.path.exists(my_file) and os.path.getsize(my_file) > 0:
-    my_list = load_from_json_file(my_file)
+if path.isfile(filename):
+    argument_list = load_from_json_file(filename)
+else:
+    argument_list = []
 
-if len(sys.argv) > 1:
-    for elemt in sys.argv[1:]:
-        my_list.append(elemt)
+argument_list.extend(sys.argv[1:])
 
-save_to_json_file(my_list, my_file)
+save_to_json_file(argument_list, filename)
