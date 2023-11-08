@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ define student class """
 
+
 class Student:
     """ define student class """
     def __init__(self, first_name, last_name, age):
