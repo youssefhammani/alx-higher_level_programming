@@ -9,11 +9,8 @@ import sys
 from 5-save_to_json_file import save_to_json_file
 from 6-load_from_json_file import load_from_json_file
 
-args = sys.argv[1:]
-try:
-    existing_list = load_from_json_file("add_item.json")
-except FileNotFoundError:
-    existing_list = []
+existing_list = load_from_json_file("add_item.json") if load_from_json_file("add_item.json") else []
 
-updated_list = existing_list + args
-save_to_json_file(updated_list, "add_item.json")
+existing_list += sys.argv[1:]
+
+save_to_json_file(existing_list, "add_item.json")
