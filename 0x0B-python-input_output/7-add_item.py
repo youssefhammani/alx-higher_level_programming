@@ -20,6 +20,6 @@ if not os.path.exists(filename):
     save_to_json_file([], filename)
 
 data = load_from_json_file(filename)
-data.extend(args)
+data += args
 
 save_to_json_file(data, filename)
