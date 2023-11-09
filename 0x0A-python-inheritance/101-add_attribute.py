@@ -4,11 +4,11 @@
 
 def add_attribute(obj, new_attr, value):
     """ add attribute """
-    allowed_types = (dict, list, set, frozenset, tuple)
-    is_type_allowed = any(isinstance(obj, t) for t in allowed_types)
-    has_slots = hasattr(type(obj), '__slots__')
+    obj_dict = hasattr(obj, '__dict__')
+    obj_slots = hasattr(obj, '__slots__')
+    type_dict = hasattr(type(obj), '__dict__')
 
-    if is_type_allowed or has_slots:
+    if obj_dict or obj_slots or type_dict:
         setattr(obj, attribute, value)
     else:
         raise TypeError("can't add new attribute")
