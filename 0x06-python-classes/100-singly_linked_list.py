@@ -56,4 +56,4 @@ class SinglyLinkedList:
         while current:
             result += str(current.data) + "\n"
             current = current.next_node
-        return result
+        return result[:-1]
