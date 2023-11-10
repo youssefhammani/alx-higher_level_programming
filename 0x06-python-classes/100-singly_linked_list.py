@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 class Node:
     def __init__(self, data, next_node=None):
         """Defines a node of a singly linked list"""
@@ -33,20 +34,29 @@ class Node:
 class SinglyLinkedList:
     def __init__(self):
         """Defines a singly linked list"""
-        self.head = None
+        self.__head = None
 
     def sorted_insert(self, value):
-        new_node = Node(value)
-        if self.head is None or value < self.head.data:
-            new_node.next_node = self.head
-            self.head = new_node
+        new = Node(value)
+        tmp = self.__head
+        add_start = False
+
+        if not self.__head:
+            self.__head = new
+            new.next_node = None
         else:
-            current = self.head
-            while current.next_node is not None\
-                    and current.next_node.data < value:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
+            if value < self.__head.data:
+                add_start = True
+            while tmp.next_node and value > tmp.next_node.data\
+                    and not add_start:
+                tmp = tmp.next_node
+            if not add_start:
+                new.next_node = tmp.next_node
+                tmp.next_node = new
+            else:
+                new.next_node = tmp
+                self.__head = new
+            new.data = value
 
     def __str__(self):
         result = ""
