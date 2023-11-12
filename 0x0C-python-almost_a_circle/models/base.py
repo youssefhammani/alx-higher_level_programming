@@ -69,3 +69,30 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize list_objs to CSV format and write to a file."""
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            if list_objs:
+                for obj in list_objs:
+                    writer.writerow(obj.to_csv())
+            else:
+                writer.writerow([])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialize instances from a CSV file."""
+        filename = "{}.csv".format(cls.__name__)
+        try:
+            with open(filename, 'r') as file:
+                reader = csv.reader(file)
+                instances = []
+                for row in reader:
+                    if row:
+                        instances.append(cls.create(*map(int, row)))
+                return instances
+        except FileNotFoundError:
+            return []
