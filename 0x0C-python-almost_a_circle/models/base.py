@@ -55,7 +55,7 @@ class Base:
         else:
             dummy = None
 
-        dummy.update(**dictionary) 
+        dummy.update(**dictionary)
         return dummy
 
     @classmethod
@@ -96,3 +96,36 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Open a window and draw all the Rectangles and Squares."""
+        turtle.speed(2)  # Set the turtle drawing speed
+
+        for rect in list_rectangles:
+            turtle.penup()
+            turtle.goto(rect.x, rect.y)
+            turtle.pendown()
+            turtle.forward(rect.width)
+            turtle.right(90)
+            turtle.forward(rect.height)
+            turtle.right(90)
+            turtle.forward(rect.width)
+            turtle.right(90)
+            turtle.forward(rect.height)
+            turtle.right(90)
+
+        for square in list_squares:
+            turtle.penup()
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            turtle.forward(square.size)
+            turtle.right(90)
+            turtle.forward(square.size)
+            turtle.right(90)
+            turtle.forward(square.size)
+            turtle.right(90)
+            turtle.forward(square.size)
+            turtle.right(90)
+
+        turtle.done()
