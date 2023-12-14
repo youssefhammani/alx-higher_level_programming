@@ -513,3 +513,19 @@ Execute the script using the MySQL command-line tool:
 ```bash
 $ cat 103-rating_genres.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
 ```
+
+# Connecting to MySQL Server
+
+To connect to the MySQL server and access the database named "hbtn_0d_tvshows_rate" on the local machine, use the following command:
+
+```bash
+$ mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
+```
+
+- **`-h :`** Specifies the host (in this case, "localhost").
+- **`-u :`** Specifies the MySQL user (in this case, "root").
+- **`-p :`** Prompts for the MySQL user's password.
+- **`hbtn_0d_tvshows_rate :`** Specifies the name of the MySQL database you want to connect to.
+
+
+After entering this command, you will be prompted to enter the password for the MySQL user specified with the -u flag. Once the correct password is provided, you will be connected to the MySQL server and have access to the "hbtn_0d_tvshows_rate" database.
