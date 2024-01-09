@@ -1,4 +1,9 @@
 #!/usr/bin/node
-const list = require('./100-data.js').list;
-console.log(list);
-console.log(list.map((item, index) => item * index));
+exports.dict = {
+    89: 1,
+    90: 2,
+    91: 1,
+    92: 3,
+    93: 1,
+    94: 2
+};
