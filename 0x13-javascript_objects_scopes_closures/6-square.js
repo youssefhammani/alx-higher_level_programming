@@ -11,7 +11,6 @@ class Square extends SquareParent {
     if (c === undefined) {
       c = 'X';
     }
-
     for (let i = 0; i < this.height; i++) {
       console.log(c.repeat(this.width));
     }
@@ -19,4 +18,3 @@ class Square extends SquareParent {
 }
 
 module.exports = Square;
-
