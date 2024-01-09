@@ -2,7 +2,5 @@
 
 const list = require('./100-datajs').list;
 
-const mappedList = list.map((value, index) => value * index);
-
 console.log(list);
-console.log(mappedList);
+console.log(list.map((value, index) => value * index));
