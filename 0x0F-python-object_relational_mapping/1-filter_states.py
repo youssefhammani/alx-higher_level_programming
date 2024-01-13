@@ -22,7 +22,8 @@ if __name__ == "__main__":
 
     # Execute the query to select states starting with 'N'
     query = "SELECT * FROM states\
-             WHERE name LIKE 'N%' ORDER BY id ASC;"
+             WHERE states.name LIKE BINARY 'N%'\
+             ORDER BY states.id ASC"
     cursor.execute(query)
 
     # Fetch all the rows and display the results
