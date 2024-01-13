@@ -5,6 +5,7 @@
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
 from model_city import City
 from model_state import Base, State
 
@@ -17,10 +18,8 @@ if __name__ == "__main__":
                            format(username, password, db_name),
                            pool_pre_ping=True)
 
-    Base.metadata.create_all(engine)
-
-    with Session(engine) as session:
-        cities = session.query(City, State).join(City)
-
-        for city, state in cities:
-            print("{}: ({}) {}".format(state.name, city.id, city.name))
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    for state, city in session.query(State, City).join(City):
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
+    session.close()
