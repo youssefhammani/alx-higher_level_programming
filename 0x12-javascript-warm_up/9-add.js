@@ -11,5 +11,5 @@ if (process.argv[2] && process.argv[3]) {
   console.log(add(process.argv[2], process.argv[3]));
 } else {
   // Print an error message if any argument is missing
-  console.log("NaN");
+  console.log('NaN');
 }
