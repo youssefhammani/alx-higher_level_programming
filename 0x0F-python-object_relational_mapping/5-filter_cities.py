@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     # Execute the query to get all cities of the specified state
     query = """
-            SELECT GROUP_CONCAT(cities.name ORDER BY cities.id ASC SEPARATOR ', ')
+            SELECT cities.name
             FROM cities
             JOIN states ON cities.state_id = states.id
             WHERE states.name = %s;
