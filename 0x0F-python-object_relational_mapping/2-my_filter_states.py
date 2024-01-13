@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Displays all values in the states table of hbtn_0e_0_usa where name matches the argument
+Displays all values in the states table of
+hbtn_0e_0_usa where name matches the argument
 """
 
 import MySQLdb
@@ -9,7 +10,8 @@ import sys
 if __name__ == "__main__":
     # Check if the number of arguments is correct
     if len(sys.argv) != 5:
-        print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
+        print("Usage: {} <username> <password> \
+                <database> <state_name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Connection parameters
