@@ -18,6 +18,7 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
+    state_name = sys.argv[4]
 
     # Connect to MySQL server at localhost:3306
     db = MySQLdb.connect(host="localhost", port=3306, user=username,
@@ -28,8 +29,8 @@ if __name__ == "__main__":
 
     # Use format to create the SQL query with user input
     query = "SELECT * FROM states\
-             WHERE states.name = '{}'\
-             ORDER BY states.id ASC".format(sys.argv[4])
+             WHERE states.name LIKE BINARY '{}'\
+             ORDER BY states.id ASC".format(state_name)
     cursor.execute(query)
 
     # Fetch all the rows and display the results
