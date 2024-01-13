@@ -5,6 +5,7 @@
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
 from relationship_city import City
 from relationship_state import Base, State
 
@@ -19,10 +20,12 @@ if __name__ == "__main__":
 
     Base.metadata.create_all(engine)
 
-    with Session(engine) as session:
-        california = State(
-                name="California",
-                cities=[City(name="San Francisco")]
-        )
-        session.add(california)
-        session.commit()
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    state = State(name="California")
+    city = City(name="San Francisco")
+    city.state = state
+    session.add(state)
+    session.add(city)
+    session.commit()
+    session.close()
