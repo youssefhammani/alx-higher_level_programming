@@ -28,17 +28,19 @@ if __name__ == "__main__":
 
     # Execute the query to get all cities of the specified state
     query = """
-            SELECT
-            GROUP_CONCAT(cities.name ORDER BY cities.id ASC SEPARATOR ', ')
+            SELECT cities.name
             FROM cities
             JOIN states ON cities.state_id = states.id
             WHERE states.name = %s;
             """
     cursor.execute(query, (state_name,))
+    cities = []
 
     # Fetch the result and display the cities
-    result = cursor.fetchone()
-    print(result[0])
+    result = cursor.fetchall()
+    for city in result:
+        cities.append(city[0])
+    print(", ".join(cities))
 
     # Close cursor and database connection
     cursor.close()
