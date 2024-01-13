@@ -29,8 +29,8 @@ if __name__ == "__main__":
 
     # Use format to create the SQL query with user input
     query = "SELECT * FROM states\
-            WHERE states.name = '{}'\
-            ORDER BY states.id ASC".format(state_name)
+             WHERE states.name = '{}'\
+             ORDER BY states.id ASC".format(state_name)
     cursor.execute(query)
 
     # Fetch all the rows and display the results
