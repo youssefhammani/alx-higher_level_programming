@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Script to list all State objects and corresponding City objects in the database hbtn_0e_101_usa
+"""
+Script to list all State objects and
+corresponding City objects in the database hbtn_0e_101_usa
 """
 
 import sys
