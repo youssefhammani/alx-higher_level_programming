@@ -7,11 +7,6 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Check if the number of arguments is correct
-    if len(sys.argv) != 5:
-        print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
-        sys.exit(1)
-
     # Connection parameters
     username = sys.argv[1]
     password = sys.argv[2]
