@@ -7,6 +7,11 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
+    # Check if the number of arguments is correct
+    if len(sys.argv) != 5:
+        print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
+        sys.exit(1)
+
     # Connection parameters
     username = sys.argv[1]
     password = sys.argv[2]
@@ -22,8 +27,8 @@ if __name__ == "__main__":
 
     # Use format to create the SQL query with user input
     query = "SELECT * FROM states\
-            WHERE name = '{}'\
-            ORDER BY id ASC;".format(state_name)
+            WHERE states.name = '{}'\
+            ORDER BY states.id ASC;".format(state_name)
     cursor.execute(query)
 
     # Fetch all the rows and display the results
