@@ -18,5 +18,5 @@ if __name__ == "__main__":
     try:
         json_response = response.json()
         print(json_response['id'])
-    except ValueError:
-        print(None)
+    except:
+        pass
